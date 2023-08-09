@@ -1,10 +1,10 @@
 import org.example.pages.HomePage;
-import org.example.Item;
+import org.example.models.Item;
 import org.example.pages.LauncherPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+
 import java.util.List;
 
 public class searchtest {
