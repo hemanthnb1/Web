@@ -10,12 +10,25 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+//    testImplementation platform('org.junit:junit-bom:5.9.1')
+//    testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.testng:testng:7.7.0'
-    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.10.0'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version:'4.11.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.1.1'
     }
 
 test {
-    useJUnitPlatform()
+    useTestNG{
+
+        useDefaultListeners true
+
+        outputDirectory = file("$buildDir/web-reports")
+
+    }
+    tasks.withType(Test) {
+
+        systemProperties System.properties
+
+    }
+
 }

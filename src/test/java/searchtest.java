@@ -1,9 +1,11 @@
+import org.example.drivers.DriverCreator;
 import org.example.pages.HomePage;
 import org.example.models.Item;
 import org.example.pages.LauncherPage;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -11,30 +13,27 @@ public class searchtest {
     @Test
     public void verifyIfSearchTermShowsRelevantResults() {
         String searchItem = "Jeans";
-        String searchKey = "Jean";
-        WebDriver webdriver=new ChromeDriver();
+        WebDriver webdriver=new DriverCreator().create("chromedriver");
 
-//        WebDriver webdriver=null;
         LauncherPage launcherPage = new LauncherPage(webdriver); // Assume webdriver is created and handy
         launcherPage.navigateTo("https://web-playground.ultralesson.com/");
-        HomePage homepage = new HomePage(webdriver);
+        HomePage homepage = new HomePage();
         homepage.search(searchItem);
         List<Item> searchItems = homepage.getSearchItems();
-//        Assert.assertEquals(4, searchItems.size());
-        System.out.println(searchItem.length());
-//        Assert.assertTrue(searchItems.stream().allMatch(item -> item.getName().contains(searchKey)));
+         Assert.assertTrue(searchItems.stream().allMatch(item -> item.getName().contains("Jeans")));
     }
 
 //    @Test
 //    public void verifyBrandSearchListsOnlyBrandItems() {
-//        String brandName = "Nike";
-//        WebDriver webDriver = null;
+//        String brandName = "Jeans";
+//        WebDriver webDriver = new ChromeDriver();
 //        LauncherPage launcherPage = new LauncherPage(webDriver);
 //        launcherPage.navigateTo("https://web-playground.ultralesson.com/");
 //        HomePage homepage = new HomePage(webDriver);
-//        homepage.search(brandName);
+//        homepage=homepage.search(brandName);
 //        List<Item> searchItems = homepage.getSearchItems();
-//        Assert.assertTrue(searchItems.stream().allMatch(item -> item.getName().contains(brandName)));
+//        Assert.assertEquals(searchItems.size(),0);
+//        webDriver.quit();
 //    }
 //
 //    @Test
@@ -61,5 +60,7 @@ public class searchtest {
 //        int itemCountDisplayed = homepage.getItemCount(); // Assume getItemCount method returns the number displayed on the page
 //        Assert.assertEquals(searchItems.size(), itemCountDisplayed);
 //    }
+
+
 
 }
