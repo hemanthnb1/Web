@@ -38,7 +38,7 @@ public class HomePage extends BasePage {
         List<Item> items = new ArrayList<>();
         for (WebElement element : elements) {
 //            String name = element.findElement(productName).getText();
-            String name = actions.getChildText(element,productNAme);
+            String name = actions.getChildText(element,productName);
             Item item = new Item();
             item.setName(name);
             items.add(item);
@@ -46,7 +46,6 @@ public class HomePage extends BasePage {
         return items;
     }
 
-    private
 //    public int getSearchItems() {
 //        List<WebElement> elements = webDriver.findElements(searchResults);
 //        return elements.size();

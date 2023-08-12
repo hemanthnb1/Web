@@ -11,4 +11,7 @@ import org.openqa.selenium.WebDriver;
             this.waits = new PageWaits(webDriver);
             this.actions=new PageActions(webDriver);
         }
-}
+
+        public BasePage() {
+        }
+    }

@@ -28,6 +28,10 @@ public class PageActions {
         }
     }
 
+    public  String getChildText(WebElement element, By productName){
+        return "";
+    }
+
     public void refreshPage() {
         webDriver.navigate().refresh();
     }
